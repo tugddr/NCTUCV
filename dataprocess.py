@@ -47,18 +47,21 @@ def DealwithData(filepath):
 			num = num+1
 	
 	return data, labels
+###  Deal with test 
+def get_img_file(filepath):
+    imagelist = []
+    for parent, dirnames, filenames in os.walk(filepath):
+        for filename in filenames:
+            if filename.lower().endswith(('.bmp', '.dib', '.png', '.jpg', '.jpeg', '.pbm', '.pgm', '.ppm', '.tif', '.tiff')):
+                imagelist.append(os.path.join(parent, filename))
+        return imagelist
 
-def getTrainPair(img_dir='../data/traing_data/traing_data', data=None, labels=None):
-	train_data = [ [os.path.join(img_dir+'/', img, '.jpg'), labels[label] ] for img, label in data ]
+def getTrainPair(img_dir='../data/training_data/training_data', data=None, labels=None):
+	train_data = [ [os.path.join(img_dir+'/', img+'.jpg'), labels[label] ] for img, label in data ]
 	return train_data
 
-#print(getTrainPair(data=data,labels=labels))
-
-batch_size = 32
-num_classes = 196
-
 def default_loader(fp):
-	return Img.open(fp).convert('RGB') 
+	return Image.open(fp).convert('RGB')
 
 class MyDataset(Dataset):
 	def __init__(self, train_data, transform=image_transforms['train'], loader=default_loader):
@@ -67,9 +70,9 @@ class MyDataset(Dataset):
 		self.transform = transform
 		self.loader=loader
 	def __getitem__(self, index):
-		input = load(self.imgs[index][0])
+		input = self.loader(self.imgs[index][0])
 		label = self.imgs[index][1]
-		if self.input_transform:
+		if self.transform:
 			input = self.transform(input)
 		
 		return input, label
