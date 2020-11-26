@@ -1,4 +1,4 @@
-HW2
+#HW2
 =
 
 Dataprocess
@@ -7,9 +7,9 @@ Dataprocess
 
 Setyolo
 ---
-obj.data:設定data資料夾
-obj.names:設定Labels
-yolov4-obj.cfg : 訓練參數
+  obj.data:設定data資料夾
+  obj.names:設定Labels
+  yolov4-obj.cfg : 訓練參數
 
 HW2.py HW2.ipynb
 ---
