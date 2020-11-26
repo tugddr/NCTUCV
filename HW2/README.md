@@ -7,12 +7,13 @@ Dataprocess
 
 Setyolo
 ---
-obj.data:設定data資料夾
-* 
-obj.names:設定Labels
-* 
- yolov4-obj.cfg : 訓練參數
-*
+* obj.data:設定data資料夾
+
+* obj.names:設定Labels
+ 
+ * yolov4-obj.cfg : 訓練參數
+
+
 HW2.py HW2.ipynb
 ---
   使用darknet的YOLOV4
