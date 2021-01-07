@@ -7,7 +7,7 @@ get_train.py產生augmentation data
 
 HW4.ipynb
 ---
-  使用darknet的YOLOV4
+  訓練過程
   
 Reference
 ---
